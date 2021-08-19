@@ -188,9 +188,9 @@ int main() {
                                 updatePasswd("/home/peisongxiao/.uai/passwd", passwds);
                         }
                         
-                        sleep(60);
-                        
                         fclose(stdout);
+                        
+                        sleep(60);
                         
                         continue;
                 }
@@ -220,9 +220,9 @@ int main() {
                         }
                         
                 if (!change) {
-                        sleep(60);
-                        
                         fclose(stdout);
+                        
+                        sleep(60);
                         
                         continue;
                 }
@@ -240,9 +240,9 @@ int main() {
                        curT->tm_year + 1900, curT->tm_mon + 1, curT->tm_mday,
                        curT->tm_hour, curT->tm_min, curT->tm_sec);
                        
-                sleep(60);
-                
                 fclose(stdout);
+                
+                sleep(60);
         }
         
         return 0;
