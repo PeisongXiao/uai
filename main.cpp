@@ -18,6 +18,10 @@ struct tm* getTime() {
         return localtime(&cur);
 }
 
+unsigned time2num(int hour, int min) {
+        return hour * 60 + min;
+}
+
 void killUsr(std::string usrName) {
         std::string cmd("pkill -KILL -u " + usrName);
         system(cmd.c_str());
@@ -150,8 +154,10 @@ int main() {
                        curT->tm_hour, curT->tm_min, curT->tm_sec);
                        
                 for (auto cur : rules) {
-                        if (curT->tm_hour >= cur.st_hour && curT->tm_hour <= cur.end_hour &&
-                            curT->tm_min >= cur.st_min && curT->tm_min <= cur.end_min) {
+                        if (time2num(cur.st_hour, cur.st_min) <=
+                            time2num(curT->tm_hour, curT->tm_min) &&
+                            time2num(cur.end_hour, cur.end_min) >=
+                            time2num(curT->tm_hour, curT->tm_min)) {
                                 restrict = true;
                                 break;
                         }
